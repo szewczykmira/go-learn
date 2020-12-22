@@ -14,3 +14,4 @@ Tutorials and getting started with working with GoLang
 
 - Function that name starts with capital letter can be called by a function not in the same package - this is known as `exported name`
 - `go build` make Go locate the module and add it as a dependency to the go.mod file
+- There is `nil` keyword (same as `None`)
