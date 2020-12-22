@@ -20,7 +20,7 @@ func logError(err error) {
 func main() {
 	setLogger()
 
-	message, err := greetings.HelloFromTheOtherSide("")
+	message, err := greetings.GetRandomGreeting("Galadriel")
 	logError(err)
 
 	fmt.Println(message)
