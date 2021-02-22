@@ -1,6 +1,9 @@
 package greetings
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 // CalculateLength Return length of the name
 func CalculateLength(name string) int {
@@ -9,9 +12,12 @@ func CalculateLength(name string) int {
 
 
 // Hello will return name and length of given name
-func Hello(name string) string {
+func Hello(name string) (string, error) {
+	if name == "" {
+		return "", errors.New("Empty name was passed")
+	}
+
 	value := CalculateLength(name)
-	fmt.Println(value)
 	message := fmt.Sprintf("Hi, %v. Welcome! Do you know that your name has %d letters?", name, value)
-	return message
+	return message, nil
 }
