@@ -1,5 +1,12 @@
-# go-learn
 Tutorials and getting started with working with GoLang
+
+- [Instalation](#instalation)
+- [Good to know:](#good-to-know)
+  - [Commands](#commands)
+  - [Syntax](#syntax)
+  - [Definitions](#definitions)-
+- [First project](getting_started/hello.go)
+
 
 ## Instalation
 ```sh
@@ -13,7 +20,7 @@ brew install go
 
 - Initialize module: `go mod init <module_name>` : __module__ allows to track dependencies.
 - Run code in file `go run <filename>.go`
--  `go mod tidy` makes sure that mod file matches projects
+-  `go mod tidy` makes sure that mod file matches projects (it's good to use after adding external package)
 - `go build` make Go locate the module and add it as a dependency to the go.mod file
 
 ### Syntax
