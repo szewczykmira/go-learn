@@ -29,6 +29,23 @@ brew install go
 - Function that name starts with capital letter can be called by a function not in the same package - this is known as `exported name`
 - There is `nil` keyword (same as `None`)
 
+- function defintion:
+  ```go
+  // (type name, type name) return type {
+  func FuncName(name variable) int {
+    return 42
+  }
+  ```
+- Declaring variables:
+  ```go
+  var message string
+  message = "Hello"
+  // or in one line
+  information := "Welcome"
+  ```
+
+- In Go, code executed as an application must go in a __main__ package.
+
 ### Definitions
 
 __package__ way to group functions, it's made up of functions in the same directory.
