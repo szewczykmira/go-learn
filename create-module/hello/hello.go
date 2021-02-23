@@ -14,10 +14,19 @@ func greetWithHandlingErrors(name string) {
 	fmt.Println(message)
 }
 
+func randomGreetWithHandlingErrors(name string) {
+	message, err := greetings.RandomGreetings(name)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(message)
+}
+
 func main() {
 	// get greeting message and print it
 	log.SetPrefix("GREETING:")
 	log.SetFlags(0)
 	greetWithHandlingErrors("Lukasz")
+	randomGreetWithHandlingErrors("Mira")
 	greetWithHandlingErrors("")
 }
