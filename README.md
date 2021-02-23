@@ -45,6 +45,10 @@ brew install go
   ```
 
 - In Go, code executed as an application must go in a __main__ package.
+- you can define custom types:
+  ```go
+  type fn func(string)(string, error)
+  ```
 
 ### Definitions
 
