@@ -6,16 +6,10 @@ import (
 	"log"
 )
 
-func greetWithHandlingErrors(name string) {
-	message, err := greetings.Hello(name)
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println(message)
-}
+type fn func(string)(string, error)
 
-func randomGreetWithHandlingErrors(name string) {
-	message, err := greetings.RandomGreetings(name)
+func greetWithHandlingErrors(greet fn, name string) {
+	message, err := greet(name)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -26,7 +20,7 @@ func main() {
 	// get greeting message and print it
 	log.SetPrefix("GREETING:")
 	log.SetFlags(0)
-	greetWithHandlingErrors("Lukasz")
-	randomGreetWithHandlingErrors("Mira")
-	greetWithHandlingErrors("")
+	greetWithHandlingErrors(greetings.Hello, "Lukasz")
+	greetWithHandlingErrors(greetings.RandomGreetings, "Mira")
+	greetWithHandlingErrors(greetings.Hello, "")
 }
