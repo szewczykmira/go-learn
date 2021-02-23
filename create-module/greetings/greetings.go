@@ -47,3 +47,16 @@ func RandomGreetings(name string) (string, error) {
 	message := fmt.Sprintf(randomFormat(), name)
 	return message, nil
 }
+
+// Hellos will return greetings for every name in a list.
+func Hellos(names []string, greet func(string) (string, error)) (map[string]string, error) {
+	messages := make(map[string]string)
+	for _, name := range names {
+		message, err := greet(name)
+		if err != nil {
+			return nil, err
+		}
+		messages[name] = message
+	}
+	return messages, nil
+}
