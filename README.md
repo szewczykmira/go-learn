@@ -22,6 +22,7 @@ brew install go
 - Run code in file `go run <filename>.go`
 -  `go mod tidy` makes sure that mod file matches projects (it's good to use after adding external package)
 - `go build` make Go locate the module and add it as a dependency to the go.mod file
+- Tests are run with `go test`
 
 ### Syntax
 
