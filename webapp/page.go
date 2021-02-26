@@ -5,6 +5,12 @@ import (
 	"io/ioutil"
 )
 
+const moduleName = "data/"
+
+func getFileName(title string) string {
+	return moduleName + title + ".txt"
+}
+
 // Page keeps info about... pages?
 type Page struct {
 	Title string
@@ -13,12 +19,12 @@ type Page struct {
 
 // *Page is a reciever
 func (p *Page) save() error {
-	filename := p.Title + ".txt"
+	filename := getFileName(p.Title)
 	return ioutil.WriteFile(filename, p.Body, 0600)
 }
 
 func loadPage(title string) (*Page, error) {
-	filename := title + ".txt"
+	filename := getFileName(title)
 	body, err := ioutil.ReadFile(filename)
 	if err != nil {
 		return nil, err
