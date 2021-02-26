@@ -1,9 +1,10 @@
 package main
 
 import (
+	"errors"
+	"html/template"
 	"net/http"
 	"regexp"
-	"html/template"
 )
 var templates = template.Must(template.ParseFiles("edit.html", "view.html"))
 
@@ -15,6 +16,11 @@ func renderTemplate(filename string, page *Page, w http.ResponseWriter) {
 }
 var validPath = regexp.MustCompile("^/(edit|save|view)/([a-zA-Z0-9]+)$")
 
-func getTitle(request *http.Request, w http.ResponseWriter, prefix string) (string, error) {
-	return request.URL.Path[len(prefix):], nil
+func getTitle(request *http.Request, w http.ResponseWriter) (string, error) {
+	m := validPath.FindStringSubmatch(request.URL.Path)
+    if m == nil {
+        http.NotFound(w, request)
+        return "", errors.New("Invalid title")
+    }
+    return m[2], nil // The title is the second subexpression.
 }

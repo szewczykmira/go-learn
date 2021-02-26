@@ -11,7 +11,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func viewHandler(w http.ResponseWriter, r *http.Request) {
-	title, _ := getTitle(r, w, "/edit/")
+	title, _ := getTitle(r, w)
 	p, err := loadPage(title)
 	if err != nil {
 		http.Redirect(w, r, "/edit/" + title, http.StatusFound)
@@ -21,7 +21,7 @@ func viewHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func editHandler(w http.ResponseWriter, r *http.Request) {
-	title, _ := getTitle(r, w, "/edit/")
+	title, _ := getTitle(r, w)
 	p, err := loadPage(title)
 	if err != nil {
 		p = &Page{Title: title}
@@ -31,7 +31,7 @@ func editHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func saveHandler(w http.ResponseWriter, r *http.Request) {
-	title, _ := getTitle(r, w, "/save/")
+	title, _ := getTitle(r, w)
 	body := r.FormValue("body")
 	p := &Page{Title: title, Body: []byte(body)}
 	err := p.save()
