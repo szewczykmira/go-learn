@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-const Port = ":8088"
+const Port = "localhost:8088"
 
 
 func main() {
