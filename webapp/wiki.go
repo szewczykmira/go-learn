@@ -9,6 +9,7 @@ const Port = "localhost:8088"
 
 
 func main() {
+	http.HandleFunc("/", frontPageHandler)
 	http.HandleFunc("/view/", makeHandler(viewHandler))
 	http.HandleFunc("/edit/", makeHandler(editHandler))
 	http.HandleFunc("/save/", makeHandler(saveHandler))
